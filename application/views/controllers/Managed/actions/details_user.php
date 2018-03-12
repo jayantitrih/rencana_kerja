@@ -3,7 +3,19 @@
 	<div class="col-xs-12 col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Details <?php echo (isset($users['username']))? ucwords($users['username']) : '';?>
+				<div class="row">
+					<div class="col-xs-6">
+						Details <?php echo (isset($users['username']))? ucwords($users['username']) : '';?>
+					</div>
+					<div class="col-xs-6">
+						<div class="text-right">
+							<?php
+								echo anchor('managed/edit_user/'.$users['id'],
+									'<i class="fa fa-pencil"></i> Edit');
+							?>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="panel-body">
 				

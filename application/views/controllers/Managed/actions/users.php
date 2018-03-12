@@ -42,7 +42,6 @@
 						</td>
 						<td>
 							<?php echo anchor('managed/remove_user/','<i class="fa fa-trash"></i>',array('class'=>'btn btn-danger','onclick'=>"return confirm('are you sure?');"));?>
-							<?php echo anchor('managed/edit_user/','<i class="fa fa-pencil"></i>',array('class'=>'btn btn-default'));?>
 							<?php echo anchor('managed/details_user/'.$value['id'],'Details',array('class'=>'btn btn-primary'));?>
 						</td>
 					</tr>

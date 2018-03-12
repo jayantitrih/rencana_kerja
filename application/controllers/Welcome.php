@@ -17,7 +17,7 @@ class Welcome extends MY_Controller
             'layout' => 'https://github.com/vmoulin78/codeigniter-layout-library',
             'rest api' => 'https://github.com/chriskacerguis/codeigniter-restserver'
         );
-        $this->layout->set_template('guest_template')
+        $this->layout->set_template('ittp_landing_template')
         ->set_title('Welcome to Codeigniter !')
         ->set_metadata('description', 'simple framework php with MVC pattern')
         ->set_http_equiv('refresh', 30)

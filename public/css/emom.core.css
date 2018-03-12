@@ -1,0 +1,230 @@
+  input.c-validation-email:valid {
+  	color: green;
+  }
+  input.c-validation-email:invalid {
+  	color: red;
+  }
+  .content-1{
+  	padding: 25px;
+  }
+  .login{
+  	width: 40%;
+  	margin:auto;
+  	margin-top:75px;
+  	padding: 25px 50px;
+  	box-shadow: 0 1px 3px rgba(0,0,0,0.25), 0 4px 9px rgba(0,0,0,0.22)!important;
+  }
+  .login-1{
+  	margin-top: 25px;
+  }
+  .register{
+  	width: 50%;
+  	margin:auto;
+  	margin-top:50px;
+  	padding: 25px 50px;
+  	box-shadow: 0 1px 3px rgba(0,0,0,0.25), 0 4px 9px rgba(0,0,0,0.22)!important;
+  }
+  label{
+  	font-size: 15px;
+  }
+  input[type="text"],input[type="password"]
+  {
+  	font-size:15px;
+  }
+  select{
+  	font-size: 15px;
+  }
+  .mahasiswa{
+  	padding: 10px;
+  	display:inline;
+  }
+  .mahasiswa-1{
+
+  }
+  .mahasiswa-2>*{
+  	margin-bottom: 30px;
+  }
+  .mahasiswa-2>*>*{
+  	margin-bottom: 30px;
+  }
+
+  /*rifqi*/
+  .navbar-shadow{
+  	/*  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.06),0 4px 5px 0 rgba(0,0,0,0.06),0 1px 10px 0 rgba(0,0,0,0.08);*/
+  	border:1px solid rgba(0,0,0,0.14);
+  	margin-bottom: 25px;
+  	height: 60px;
+  }
+  .logo{
+  	width: 125px;
+  }
+  p{
+  	font-size: 15px;
+  	line-height: 1.6;
+  	color: #555;
+  	letter-spacing: 0.2px;
+  	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  }
+  .judul-h1{
+  	font-size: 50px;
+  }
+  .custom-login{
+  	font-size: 1.4em;
+  	padding: 10px 25px;
+  	margin-bottom: 50px;
+  	padding: 10px 50px;
+  	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);   
+  }
+  .custom-register{
+  	font-size: 1.4em;
+  	padding: 10px 25px;
+  	margin-bottom: 50px;
+  	padding: 10px 50px;
+  	background-color: transparent;
+  	color: #000;
+  	border: 0px;    
+  }
+  .bg-light{
+  	background-color: #fff!important;
+  	height: 70px;
+  	transition: opacity .2s ease,visibility 0s ease .2s,-webkit-transform 0s ease .2s;
+  }
+  .nav-link{
+  	font-size: 1.4em;
+  }
+  .footer{
+  	position: absolute;
+  	bottom: 0;
+  	background-color: #000000;
+  	width: 100%;
+  	height: 15vh;
+  }
+  .footer>*>*>*>*{
+  	color: #fff;
+  	margin-bottom: 0px;
+  }
+  .welcome{
+  	width: 100%;
+  	height: 85vh;
+  	background-color: #FBFBFC;
+  }
+  .pengaduan{
+  	background-color: #EEEEEE;
+  	border-bottom: 1px solid #D4D8DC;
+  }
+  .background-putih{
+  	padding: 25px 50px;
+  	padding-top: 75px;
+  	background-color: #fff;
+  	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3)
+
+  }
+
+
+  .judul-1{
+  	font-weight: bold;
+  	margin-bottom: 75px;
+  	color: #000;
+  	font-size: 25px;
+  }
+  .judul-2{
+  	font-weight: bold;
+  	font-size: 50px;
+  	color: #000;
+  	font-family: 'Mukta Malar', sans-serif;
+  }
+  .judul-3{
+  	font-weight: 300;
+  	font-size: 35px;
+  	color: #000;
+  	font-family: 'Mukta Malar', sans-serif;
+  }
+  .btn-register{
+  	width: 100%;
+  	margin-top: 25px;
+  }
+  .btn-kembali{
+  	text-align: center;
+  	margin-top: 25px;
+  }
+  .btn-login{
+  	width: 100%;
+  } 
+  .admin-table{
+  	padding: -25px;
+  }
+  .background-admin{
+  	background-color: #fff;
+  	height: auto;
+  	padding-bottom: 25px;
+  	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2)!important;
+  }
+  .admin_navbar{
+  	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2)!important;
+  }
+  th{
+  	text-align: center;
+  	font-family: 'Roboto', sans-serif;
+  	font-size: 14px;
+  	text-transform: uppercase;
+  	font:inherit;
+  	font-weight: bold;
+  }
+  td{
+  	font-size: 14px;
+
+  }
+  .background-admin-1{
+  	background-color: #EEEEEE;
+  }
+  *{
+  	font-family: 'Roboto', sans-serif;
+  	font:inherit;
+  	font-weight: 400;
+  }
+  .navbar-light .navbar-nav .nav-link{
+  	color: rgba(0,0,0,0.54);
+  	padding: 0px 15px!important;
+  	text-transform: uppercase;
+  	font-size: 15px;
+  	font-weight: 500;
+  }
+  .grocery-crud-table{
+  	border:0px;
+  }
+  .gc-container .footer-tools
+  {
+  	border-bottom:0px!important;
+  }
+  .gc-container .header-tools{
+  	border-left: 0px solid #DDDDDD!important;
+  	border-right: 0px solid #DDDDDD!important;
+  }
+  .gc-container .table-container{
+  	border-left: 0px solid #DDD!important;
+  	border-right: 0px solid #DDD!important;
+  }
+  .table-bordered thead th{
+  	border-bottom-width:0px!important;
+  }
+  .floatL.l5{
+  	font-size: 15px!important;
+  }
+  .table-bordered{
+  	border:0px solid #e9ecef!important;
+  }
+  .table-label{
+  	background-color: #fff!important;
+  }
+  .staff{
+  	padding: 25px;
+  }
+
+
+html{
+	background: url('../images/emom-bg.jpeg') no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}

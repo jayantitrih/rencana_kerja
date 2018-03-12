@@ -95,4 +95,13 @@ class Managed extends MY_Controller
 
 	}
 
+	public function remove_user($id=''){
+		$this->load->model('users');
+		$users = $this->users->get($id);
+		if ($users) {
+			$this->users->delete($id);
+		}
+		redirect('managed/index','refresh');
+	}
+
 }
