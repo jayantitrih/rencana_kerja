@@ -64,7 +64,7 @@ class Managed extends MY_Controller
 
 	public function groups(){
 		$this->load->model('groups');
-		$data['groups'] = $this->users->get_all();
+		$data['groups'] = $this->groups->get_all();
 		$this->layout->set_template('admin_template')
 			->add_breadcrumb_item('Home',site_url('dashboard/index'))
 			->add_breadcrumb_item('groups',site_url('managed/groups'))
@@ -101,7 +101,106 @@ class Managed extends MY_Controller
 		if ($users) {
 			$this->users->delete($id);
 		}
-		redirect('managed/index','refresh');
+		redirect('managed/users','refresh');
+	}
+
+	public function remove_group($id=''){
+		$this->load->model('groups');
+		$groups = $this->groups->get($id);
+		if ($groups) {
+			$this->groups->delete($id);
+		}
+		redirect('managed/groups','refresh');
+	}
+
+	public function edit_group($id=''){
+		$this->load->model('groups');
+		$data['id']		= $id;
+		$data['group'] 	= $this->groups->get($id);
+		$this->layout->set_template('admin_template')
+			->add_breadcrumb_item('Home',site_url('dashboard/index'))
+			->add_breadcrumb_item('Groups',site_url('managed/groups'))
+			->add_breadcrumb_item($data['group']['name'],site_url('managed/edit_group/'.$id))
+            ->set_title('Details Group')
+            ->render_action_view($data);
+	}
+
+	public function update_group($id=''){
+		$this->load->model('groups');
+		$this->form_validation->set_rules('name','Name','trim|required');
+		if ($this->form_validation->run()) {
+			$group 	=  $this->groups->get($id);
+			$data 	= $this->input->post(NULL,true);
+			if ($group) {
+				$this->groups->update($id,$data);
+			}
+			redirect('managed/groups','refresh');
+		}else{
+			$this->layout->set_alert('warning',validation_errors());
+			redirect('managed/edit_group/'.$id,'refresh');
+		}
+	}
+
+	public function add_user(){
+		$this->load->model('groups');
+		$data['groups'] = $this->groups->get_all();
+		$this->layout->set_template('admin_template')
+			->add_breadcrumb_item('Home',site_url('dashboard/index'))
+			->add_breadcrumb_item('Users',site_url('managed/users'))
+			->add_breadcrumb_item('Add User',site_url('managed/add_user'))
+            ->set_title('Add User')
+            ->render_action_view($data);
+	}
+
+	public function store_user(){
+		$this->load->model('users');
+		$data 	= $this->input->post(NULL,true);
+		if ($this->form_validation->run('register')) {
+			$additional_data = array(
+				'first_name' => $data['first_name'],
+				'last_name' => $data['last_name'],
+				'phone' => $data['phone'],
+			);
+
+			$new_user_id = $this->ion_auth->register($data['identity'], $data['password'], $data['email'], $additional_data);
+			if ($new_user_id > 0) {
+				redirect('managed/users/details_user/'.$new_user_id,'refresh');
+			}else{
+				$this->layout->set_alert('error','user not created');
+				redirect('managed/users/add_user/','refresh');
+			}
+		}else{
+			$this->layout->set_alert('warning',validation_errors());
+			redirect('managed/edit_group/'.$id,'refresh');	
+		}
+
+	}
+
+	public function add_group(){
+		$this->layout->set_template('admin_template')
+			->add_breadcrumb_item('Home',site_url('dashboard/index'))
+			->add_breadcrumb_item('Groups',site_url('managed/groups'))
+			->add_breadcrumb_item('Add Group',site_url('managed/add_group'))
+            ->set_title('Add Group')
+            ->render_action_view();
+	}
+
+	public function store_group(){
+		$this->load->model('groups');
+		$this->form_validation->set_rules('name','Name','trim|required');
+		$data 	= $this->input->post(NULL,true);
+		if ($this->form_validation->run()) {
+			$new_group_id = $this->groups->insert($data);
+			if ($new_group_id > 0) {
+				redirect('managed/groups/','refresh');
+			}else{
+				$this->layout->set_alert('error','group not created');
+				redirect('managed/add_group','refresh');
+			}
+		}else{
+			$this->layout->set_alert('warning',validation_errors());
+			redirect('managed/add_group/','refresh');	
+		}
 	}
 
 }

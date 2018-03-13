@@ -127,7 +127,7 @@ class Welcome extends MY_Controller
         if ($data = $this->input->post(NULL,true)) {
             if ($this->form_validation->run('register')) {
                 $email = strtolower($this->input->post('email'));
-                //$identity = ($identity_column === 'email') ? $email : $this->input->post('identity');
+                
                 $identity = $data['identity'];
                 $password = $this->input->post('password');
 

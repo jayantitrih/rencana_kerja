@@ -1,6 +1,19 @@
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3>List Users</h3>
+
+		<div class="row">
+			<div class="col-xs-4">
+				List Users
+			</div>
+			<div class="col-xs-8">
+				<div class="text-right">
+					<div class="btn-groups">
+						<?php echo anchor('managed/add_user','<i class="fa fa-plus"></i> Add User',array('class'=>'btn btn-primary'));?>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 	<div class="panel-body">
 		<table class="table table-bordered datatables">
@@ -38,7 +51,7 @@
 						<td>
 							<input type="checkbox" name="active" value="<?php echo $value['id'];?>"
 							<?php echo ($value['active'] == 1)? 'checked' : '';?>
-							 />
+							/>
 						</td>
 						<td>
 							<?php echo anchor('managed/remove_user/','<i class="fa fa-trash"></i>',array('class'=>'btn btn-danger','onclick'=>"return confirm('are you sure?');"));?>
