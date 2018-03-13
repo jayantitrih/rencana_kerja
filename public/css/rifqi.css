@@ -184,6 +184,7 @@ h1{
     text-align: center;
     background-color: #fff;
 }
+
 .icons-1{
     font-size: 5em;
     margin-bottom: 10%;
@@ -389,5 +390,103 @@ a.socialIcon:hover, .socialHoverClass {
 }
 .arrow:hover{
     background: #1FD9B1;
+    cursor: pointer;
+}
+
+/*login*/
+.login{
+    width: 100%;
+    height: 100vh;
+    background: #253A48;
+    padding-top: 6%;
+}
+.box-login{
+    box-shadow: 0 2px 15px rgba(0,0,0,.13);
+    text-align: center;
+    background-color: #fff;
+    width: 75%;
+    margin:auto;
+    height: 70vh;
+    border-radius: 5px;
+}
+.login-1{
+    background:linear-gradient(45deg, rgba(255, 135, 101, 0.87) 0%, rgba(255, 107, 167, 0.91) 100%), url(../images/login.jpg);
+    
+    height: 70vh;
+    padding: 50px 0px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.login-2{
+    list-style: none;
+    position: absolute;
+    bottom: 10%;
+}
+.login-2>li{
+    font-family: 'helvetica', sans-serif;
+    color: #fff;
+    line-height: 1.9;
+    font-weight: 400;
+    font-size: 15px;
+}
+.login-31{
+    color: #fff;
+    font-family: 'helvetica', sans-serif;
+    font-weight: 100!important;
+    letter-spacing: 3px;
+    margin-top: 10%;
+}
+.login-4{
+    font-size: 5em;
+    color: #fff;
+}
+.login-5{
+    padding: 50px 10px;
+    padding-right: 50px;
+    padding-left: 40px;
+}
+.login-6{
+    border-radius: 0px;
+    border:0px;
+    border-bottom: 1px solid #d9d9d9;
+    padding-left:0px;
+    outline: none!important;
+    height: 40px;
+}
+.login-6:focus{
+    outline: none!important;
+    box-shadow: none;
+    border-bottom:2px solid #FF846D;
+}
+.login-6::-webkit-input-placeholder{
+    color: #CBD0D8;
+}
+.login-7{
+    background: linear-gradient(45deg, rgb(255, 107, 167) 0%, rgb(255, 135, 101) 100%);
+    box-shadow: 0 2px 5px -1px rgba(0,0,0,.26);
+    border-radius: 25px!important;
+    padding: 10px 35px!important;
+    /*background: linear-gradient(45deg, #ff6ba7 0%, #ff8765 100%);*/
+    color:#fff;
+    font-weight: bold;
+    transition: 0.5s all ease;
+    width: 50%;
+    margin-top: 5%;
+}
+.login-7:hover{
+    box-shadow: 0 5px 10px -1px rgba(0,0,0,.26);
+}
+.login-8{
+    margin-top: 8%;
+    width: 90%;
+    text-align: left;
+}
+.arrow-login{
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    left: 25px;
+}
+.arrow-login:hover{
     cursor: pointer;
 }
