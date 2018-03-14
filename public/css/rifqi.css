@@ -3,7 +3,7 @@
     src : url('../fonts/helvetica.ttf');
 }
 .content-1{
-    background: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
+    background: -webkit-linear-gradient(right, rgba(253,130,86,1), rgba(247,75,98,1));
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -410,7 +410,7 @@ a.socialIcon:hover, .socialHoverClass {
     border-radius: 5px;
 }
 .login-1{
-    background:linear-gradient(45deg, rgba(255, 135, 101, 0.87) 0%, rgba(255, 107, 167, 0.91) 100%), url(../images/login.jpg);
+    background:-webkit-linear-gradient(right, rgba(253, 130, 86, 0.92), rgba(247, 75, 98, 0.91)), url(../images/login.jpg), url(../images/login.jpg);
     
     height: 70vh;
     padding: 50px 0px;
