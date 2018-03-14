@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $CI->layout->trigger_css(); ?>
     <?php $CI->layout->add_js_uri('js/jquery-3.2.1.min.js');?>
     <?php $CI->layout->add_js_uri('bootstrap/js/bootstrap.min.js');?>
-    <script type="text/javascript" src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <?php $CI->layout->add_js_uri('font-awesome/svg-with-js/js/fontawesome-all.js');?>
     <?php $CI->layout->add_js_uri('js/rifqi.js');?>
 
 </head>
