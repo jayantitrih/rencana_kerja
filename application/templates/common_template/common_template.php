@@ -6,16 +6,12 @@
     <?php $CI->layout->trigger_metadata(); ?>
     <?php $CI->layout->trigger_http_equiv(); ?>
     <?php $CI->layout->add_css_uri('css/app.css');?>
-    
     <?php $CI->layout->add_css_uri('css/bootstrap-notifications.min.css');?>
     <?php $CI->layout->add_css_uri('css/font-awesome.min.css','local');?>
     <?php $CI->layout->add_css_uri('css/dataTables.bootstrap.css','local');?>
-    
     <?php $CI->layout->add_css_uri('css/jquery-ui.min.css','local');?>
     <?php $CI->layout->add_css_uri('css/summernote.css','local');?>
-
     <?php $CI->layout->add_css_uri('css/custom.bootstrap.css','local');?>
-
     <?php $CI->layout->trigger_css(); ?>
 </head>
 <body>
@@ -42,7 +38,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <?php
-                        //$controller = $CI->router->fetch_class();
+                    //$controller = $CI->router->fetch_class();
                     $method     = $CI->router->fetch_method();
                     if ($method != 'index') {
                         if($CI->current_user){
@@ -51,6 +47,11 @@
                     }
                     
                     ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    
                     <?php echo (isset($alert))? $alert : ''; ?>
                     
                     <?php $CI->layout->trigger_content_section('main'); ?>
@@ -62,21 +63,14 @@
     <?php $CI->layout->include_template('hidden_partial'); ?>
 
     <?php $CI->layout->add_js_uri('js/jquery-1.9.1.min.js');?>
-    
     <?php $CI->layout->add_js_uri('js/jquery-ui.min.js');?>
-
     <?php $CI->layout->add_js_uri('js/bootstrap.min.js');?>
-    
     <?php $CI->layout->add_js_uri('js/jquery.dataTables.min.js');?>
     <?php $CI->layout->add_js_uri('js/dataTables.bootstrap.js');?>
-
-    
     <?php $CI->layout->add_js_uri('js/summernote.js');?>
-    
     <?php $CI->layout->add_js_uri('js/ciapakai.js');?>
     
-    
-    
+
     <?php $CI->layout->trigger_js(); ?>
 </body>
 </html>

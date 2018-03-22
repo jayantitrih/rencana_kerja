@@ -1,5 +1,10 @@
 $(document).ready(function(){
-	
+	var url = window.location;
+	$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+	$('ul.nav a').filter(function() {
+		return this.href == url;
+	}).parent().addClass('active');
+
 	/* summernote */
 	if ( $("#summernote").length > 0) {
 		$("#summernote").summernote({ 
@@ -17,7 +22,7 @@ $(document).ready(function(){
     			]
     		}); 
 	}
-	
+
 	if ($('.breadcrumb').length == 1) {
 		$('.breadcrumb').find('li').last().find('a').css({
 			'text-decoration' :'none',
@@ -26,11 +31,7 @@ $(document).ready(function(){
 		});
 	}
 
-	var url = window.location;
-	$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
-	$('ul.nav a').filter(function() {
-		return this.href == url;
-	}).parent().addClass('active');
+	
 
 	/*
 	* input checkout untuk memilih action 
@@ -49,7 +50,7 @@ $(document).ready(function(){
 				'group_id':group_id 
 			}
 			if (group_id == 0) {
-				alert('select group permissions first');
+				alert('pilih level user dahulu');
 				$('select[name="group_id"]').focus();
 			}else{
 				if ($(this).is(':checked')) {
@@ -98,8 +99,6 @@ $(document).ready(function(){
 			}else{
 				$(this).prop('checked', true);
 			}
-			
-			
 		});
 	}
 
@@ -187,8 +186,6 @@ $(document).ready(function(){
 	}
 
 	
- 
-
 	$('.btn-next').click(function(){
 		$('.nav-tabs > .active').next('li').find('a').trigger('click');
 	});
@@ -208,3 +205,4 @@ function set_autocomplete(action_url,selector,input_hidden){
 		}
 	});
 }
+

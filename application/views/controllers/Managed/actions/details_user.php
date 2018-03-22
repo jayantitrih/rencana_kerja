@@ -1,4 +1,3 @@
-
 <div class="row">
 	<div class="col-xs-12 col-md-4">
 		<h3>Account Information </h3>
@@ -30,7 +29,7 @@
 	</div>
 	<div class="col-xs-12 col-md-4">
 		<h3>General Information</h3>
-		
+
 		<div class="form-group">
 			<h4>
 				<small>Born Place, Date of Birthday</small>
@@ -68,9 +67,9 @@
 							echo anchor($url,'preview');
 						}
 					}
-					
+
 				}
-				
+
 				?>
 			</h4>
 		</div>
@@ -190,10 +189,10 @@
 			</div>
 			<div class="modal-body">
 				<?php echo form_open('managed/add_group_permission/'.$users['id'],array('class'=>'form-inline'));?>
-				<form class="form-add-group" method="post" class="">
-					<div class="row">
-						<div class="col-xs-10">
-							<select class="col-xs-12" name="group_id">
+				
+				<div class="row">
+					<div class="col-xs-10">
+						<select class="col-xs-12" name="group_id">
 							<option value="0">Choose one</option>
 							<?php
 							if (isset($roles) && isset($groups)) {
@@ -206,17 +205,17 @@
 							}
 							?>
 						</select>
-						</div>
-						<div class="col-xs-2">
-							<button type="submit" class="btn btn-primary ">
+					</div>
+					<div class="col-xs-2">
+						<button type="submit" class="btn btn-primary ">
 							<i class="fa fa-plus"></i>&nbsp;
 							Add
-							</button>
-						</div>
+						</button>
 					</div>
-
-					<?php echo form_close();?>
 				</div>
+
+				<?php echo form_close();?>
 			</div>
 		</div>
 	</div>
+</div>

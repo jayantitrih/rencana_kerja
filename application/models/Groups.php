@@ -21,5 +21,4 @@ class Groups extends MY_Model
 		}
 		return $send;
 	}
-
 }

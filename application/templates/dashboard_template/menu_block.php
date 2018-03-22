@@ -7,17 +7,6 @@
 	}
 	
 ?>
-<ul class="nav navbar-nav">
-	<!--<li class="active">
-		<a href="#">
-			Sample
-			<span class="badge">2</span>
-		</a>
-	</li>-->
-	<li class="active">
-		<?php echo anchor('dashboard/index','Home'); ?>
-	</li>
-</ul>
 <ul class="nav navbar-nav navbar-right">
 	<li class="dropdown dropdown-notifications">
 		<a href="#" class="dropdown-toggle" id="list-notif-lg" data-toggle="dropdown" style="width: 45px; padding-right: 20px;height: 45px;">

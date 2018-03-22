@@ -167,7 +167,7 @@
     	if (!is_numeric($original)) {
     		$original = strtotime($original);
     	}
-    	$year_origin 	= date('Y',$original);
+		$year_origin 	= date('Y',$original);
     	$year_now 		= date('Y');
     	
     	if ($year_origin == $year_now) {
@@ -175,7 +175,6 @@
     	}else{
     		$newDate = date('l, d F Y', $original).' ';
     	}
-
     	$newDate .= ($time)? date('h : i :s ',$original) : '';
     	return $newDate;
 	}
