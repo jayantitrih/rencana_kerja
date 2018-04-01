@@ -55,7 +55,8 @@
 						</td>
 						<td>
 							<?php echo anchor('managed/remove_user/','<i class="fa fa-trash"></i>',array('class'=>'btn btn-danger','onclick'=>"return confirm('are you sure?');"));?>
-							<?php echo anchor('managed/details_user/'.$value['id'],'Details',array('class'=>'btn btn-primary'));?>
+							<?php //echo anchor('#','<i class="fa fa-key"></i> Reset',array('class'=>'btn btn-default'));?>
+							<?php echo anchor('managed/details_user/'.$value['id'],'<i class="fa fa-eye"></i> View',array('class'=>'btn btn-primary'));?>
 						</td>
 					</tr>
 

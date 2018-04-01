@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-12 col-md-4">
 	<div class="form-group">
-		<label><?php echo ucwords('pilih module aplikasi');?></label>
+		<label><?php echo ucwords('select the application module');?></label>
 		<div class="list-group">
   	<?php
 	
@@ -12,15 +12,9 @@
 					$active ='active';
 					echo '<input type="hidden" value="'.$value.'" name="modul" />';
 				}
-				?>
-				<a href="<?php echo site_url('managed/index/'.$value.'/');?>" class="list-group-item <?php echo $active;?>">
-					<?php 
-						if (function_exists('set_module_name')) {
-							echo set_module_name($value);
-						}
-					?>
-				</a>
-			<?php	
+				if (function_exists('set_module_name')) {
+					echo anchor('#',set_module_name($value),array('class'=>'list-group-item choose-module '.$active,'id'=>$value));
+				}
 			}
 		}
 	?>
@@ -35,9 +29,9 @@
 			<?php if(isset($controller_name) && !empty($controller_name)) : ?>
 
 			<div class="form-group">
-				<label><?php echo ucwords('pilih level user');?></label>
+				<label><?php echo ucwords('select group permissions');?></label>
 				<select name="group_id" class="form-control">
-					<option value="0">Pilih salah satu</option>
+					<option value="0">select one</option>
 					<?php
 						if (isset($groups)) {
 							foreach ($groups as $key => $value) {
@@ -58,7 +52,9 @@
 			</div>
 			<?php else: ?>
 				<div style="padding-top: 25px;">
-					<i > level user akan muncul disini setelah modul aplikasi terpilih</i>	
+					<i>
+						group permissions will appear here after the application module is selected
+					</i>	
 				</div>
 				
 			<?php endif; ?>
@@ -68,9 +64,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-
-
-			<h4>Tentukan aksi pengguna</h4>
+			<h4>Specify user action</h4>
 			<hr/>
 			<?php if(isset($actions)) : ?>
 
@@ -95,11 +89,11 @@
 						<?php	
 							}
 					}else{
-						echo '<i>'.ucwords('module aplikasi yang dipilih tidak memiliki aksi').'</i>';
+						echo '<i>'.ucwords('the selected application module has no action').'</i>';
 					}
 				?>
 			<?php else: ?>
-				<i>pilih module aplikasi terlebih dahulu sebelum menentukan aksi pengguna</i>
+				<i>select the application module first before determining the user action</i>
 			<?php endif; ?>
 				
 			</div>

@@ -37,10 +37,7 @@
 		$send = array();
 		if ($data) {
 			foreach ($data as $key => $value) {
-				$send[] = array(
-					'id'=> $value['group_id'],
-					'name'=> get_group_name($value['group_id'])
-				);
+				$send[] = get_details_group($value['group_id']);
 			}
 		}
 		return $send;
@@ -54,4 +51,10 @@
 			return $data['name'];
 		}
 		return false;
+	}
+
+	function get_details_group($id_group=''){
+		$ci =&get_instance();
+		$ci->load->model('groups');
+		return $ci->groups->get($id_group);
 	}

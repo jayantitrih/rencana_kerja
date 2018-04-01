@@ -58,7 +58,7 @@ class Managed extends MY_Controller
 		$this->layout->set_template('admin_template')
 			->add_breadcrumb_item('Home',site_url('dashboard/index'))
 			->add_breadcrumb_item('Permission',site_url('permission/index'))
-            ->set_title('Set permissions')
+            ->set_title('Set Group Permissions')
             ->render_action_view($data);
 	}
 
@@ -68,7 +68,7 @@ class Managed extends MY_Controller
 		$this->layout->set_template('admin_template')
 			->add_breadcrumb_item('Home',site_url('dashboard/index'))
 			->add_breadcrumb_item('groups',site_url('managed/groups'))
-            ->set_title('Set permissions')
+            ->set_title('Set Group Permissions')
             ->render_action_view($data);
 	}
 
@@ -84,8 +84,9 @@ class Managed extends MY_Controller
 	}
 
 	public function details_user($id=''){
-		$this->load->model('users');
+		$this->load->model(array('users','groups'));
 		$data['users'] = $this->users->get($id);
+		$data['groups']= $this->groups->get_all();
 		$this->layout->set_template('admin_template')
 			->add_breadcrumb_item('Home',site_url('dashboard/index'))
 			->add_breadcrumb_item('Users',site_url('managed/users'))
@@ -161,17 +162,19 @@ class Managed extends MY_Controller
 				'last_name' => $data['last_name'],
 				'phone' => $data['phone'],
 			);
-
+			
 			$new_user_id = $this->ion_auth->register($data['identity'], $data['password'], $data['email'], $additional_data);
+			
+			
 			if ($new_user_id > 0) {
-				redirect('managed/users/details_user/'.$new_user_id,'refresh');
+				redirect('managed/details_user/'.$new_user_id,'refresh');
 			}else{
-				$this->layout->set_alert('error','user not created');
-				redirect('managed/users/add_user/','refresh');
+				$this->layout->set_alert('danger',$this->ion_auth->errors());
+				redirect('managed/add_user/','refresh');
 			}
 		}else{
 			$this->layout->set_alert('warning',validation_errors());
-			redirect('managed/edit_group/'.$id,'refresh');	
+			redirect('managed/add_user/','refresh');	
 		}
 
 	}
@@ -201,6 +204,34 @@ class Managed extends MY_Controller
 			$this->layout->set_alert('warning',validation_errors());
 			redirect('managed/add_group/','refresh');	
 		}
+	}
+
+	public function add_group_permission($user_id=''){
+		$this->load->model('users');
+		$this->form_validation->set_rules('group_id','Group Name','trim|required|is_natural_no_zero');
+
+		if ($this->form_validation->run()) {
+			$data['group_id'] 	= $this->input->post('group_id');
+			$user = $this->users->get($user_id);
+			if ($user) {
+				$data['user_id'] = $user_id;
+				$this->db->insert('users_groups',$data);
+			}else{
+				$this->layout->set_alert('warning','user not registered');	
+			}
+		}else{
+			$this->layout->set_alert('warning',validation_errors());
+		}
+		redirect('managed/details_user/'.$user_id,'refresh');
+	}
+
+	public function remove_group_permission($user_id='',$group_id=''){
+		$this->db->where('user_id',$user_id);
+		$this->db->where('group_id',$group_id);
+		if ($this->db->delete('users_groups')) {
+			$this->layout->set_alert('success','success to remove group permission');
+		}
+		redirect('managed/details_user/'.$user_id,'refresh');
 	}
 
 }

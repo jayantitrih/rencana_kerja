@@ -1,34 +1,15 @@
-
-<div class="row">
-	<div class="col-xs-12 col-md-6 col-md-offset-3 col-lg-offset-3">
-		<?php echo form_open('welcome/submit_forgot_password');?>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<div class="form-group">
-					<label>
-						<?php 
-						if ($type == 'email') {
-							echo sprintf(lang('forgot_password_email_label'), $identity_label);
-						}else{
-							echo sprintf(lang('forgot_password_identity_label'), $identity_label);
-						}?>
-					</label>
-					<?php echo form_input($identity);?>
-				</div>
-			</div>
-			<div class="panel-footer">
-				<div class="row">
-					<div class="col-xs-6">
-						<?php echo anchor('welcome/login','Back');?>
-					</div>
-					<div class="col-xs-6">
-						<div class="text-right">
-							<button type="submit" class="btn btn-primary">Send Password Reset Link</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<?php echo form_close();?>
-	</div>
+<div class="login-5">
+    <h3 class="text-left"><?php echo lang('forgot_password_heading');?></h3>
+    <p class="paragraf text-left" style="margin-top: 20px;">
+        <?php echo lang('forgot_password_subheading');?>
+    </p>
+    <?php echo form_open('welcome/submit_forgot_password');?>
+    <div class="form-group">
+        <?php echo form_input($identity);?>
+    </div>
+    <?php echo form_submit('submit', lang('forgot_password_submit_btn'),array('class'=>'btn login-7'));?>
+    <?php echo form_close();?>
+    <p class="paragraf text-left">
+        <?php echo anchor('welcome/login','Back');?>
+    </p>
 </div>

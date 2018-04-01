@@ -9,6 +9,10 @@
     <?php $CI->layout->add_css_uri('css/bootstrap-notifications.min.css');?>
     <?php $CI->layout->add_css_uri('css/font-awesome.min.css','local');?>
     <?php $CI->layout->add_css_uri('css/dataTables.bootstrap.css','local');?>
+    
+    <?php $CI->layout->add_css_uri('css/jquery-ui.min.css','local');?>
+    <?php $CI->layout->add_css_uri('css/summernote.css','local');?>
+    
 
     <?php $CI->layout->trigger_css(); ?>
 </head>
@@ -23,7 +27,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo site_url('/');?>">
+                    <a class="navbar-brand" href="<?php echo site_url('dashboard/index');?>">
                         <?php echo (isset($app_name))? $app_name : 'Codeigniter Apps';?>
                     </a>
                 </div>
@@ -36,14 +40,15 @@
             <div class="row">
                 <div class="col-xs-12">
                     <?php
-
-                    if($CI->current_user){
-                        $CI->layout->trigger_breadcrumb();
+                        //$controller = $CI->router->fetch_class();
+                    $method     = $CI->router->fetch_method();
+                    if ($method != 'index') {
+                        if($CI->current_user){
+                           // $CI->layout->trigger_breadcrumb();
+                        }
                     }
                     
                     ?>
-                </div>
-                <div class="col-xs-12">
                     <?php echo (isset($alert))? $alert : ''; ?>
                     
                     <?php $CI->layout->trigger_content_section('main'); ?>
@@ -54,14 +59,21 @@
     </div>
     <?php $CI->layout->include_template('hidden_partial'); ?>
 
-    <?php $CI->layout->add_js_uri('js/jquery-3.2.1.min.js');?>
-    <?php $CI->layout->add_js_uri('js/app.js');?>
+    <?php $CI->layout->add_js_uri('js/jquery-1.9.1.min.js');?>
+    
+    <?php $CI->layout->add_js_uri('js/jquery-ui.min.js');?>
+
+    <?php $CI->layout->add_js_uri('js/bootstrap.min.js');?>
     
     <?php $CI->layout->add_js_uri('js/jquery.dataTables.min.js');?>
     <?php $CI->layout->add_js_uri('js/dataTables.bootstrap.js');?>
-    
 
+    
+    <?php $CI->layout->add_js_uri('js/summernote.js');?>
+    
     <?php $CI->layout->add_js_uri('js/ciapakai.js');?>
+    
+    
     
     <?php $CI->layout->trigger_js(); ?>
 </body>

@@ -6,26 +6,7 @@ require APPPATH.'libraries/REST_Controller.php';
 
 class Api extends REST_Controller
 {
-	/**
-	* @example insert data
-	* @param $_POST
-	* $input = $_POST;
-	* $this->db->insert('nama tabel',$input);
-	* @example update data
-	* @param $_POST
-	* $input = $_POST;
-	* $this->db->where('primary_key',$_POST['primary_key']);
-	* $this->db->update('nama tabel',$input);
-	* @example delete data
-	* @param $_POST
-	* $this->db->where('primary_key',$_POST['primary_key']);
-	* $this->db->insert('nama tabel');
-	* @example get data
-	* @param $_GET
-	* $input = $_POST;
-	* $this->db->where('column_name',$_POST['column_name']);
-	* $this->db->get('nama tabel')->result_array();
-	**/
+	
 	function __construct()
 	{
 		parent::__construct();
@@ -41,8 +22,16 @@ class Api extends REST_Controller
 					isset($_POST['aksi']) &&
 					isset($_POST['group_id']) 
 				) {
-					$inserted_id  = $this->permissions->insert($_POST);
-					$message = $inserted_id;
+					$this->db->where('group_id',$_POST['group_id']);
+					$this->db->where('modul',$_POST['modul']);
+					$this->db->where('aksi',$_POST['aksi']);
+					$exist = $this->db->get('permissions')->row();
+					if (!$exist) {
+						$inserted_id  = $this->permissions->insert($_POST);
+						$message = $inserted_id;
+					}else{
+						$message = 'already exist';
+					}
 				}
 			}
 			$this->response($message);
@@ -85,5 +74,31 @@ class Api extends REST_Controller
 		}else{
 			$this->response('not allowed',REST_Controller::HTTP_FORBIDDEN);
 		}
+	}
+
+	public function get_by_keyword_get($model='users',$field='email'){
+		$data = array();
+		if (isset($_GET['term'])) {
+			$this->load->model($model);
+			
+			$result = $this->$model->get_by_like(
+				array($field),
+				$_GET['term']
+			);
+
+			$primary_key = $this->$model->get_primary_key();
+
+			if ($result) {
+				foreach ($result as $key => $value) {
+					if (isset($value[$field])) {
+						$data[] = array(
+							'key' 	=> $value[$primary_key],
+							'value' => $value[$field]
+						);
+					}
+				}
+			}
+		}
+		$this->response($data);
 	}
 }

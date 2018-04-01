@@ -2,16 +2,20 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	$ci =&get_instance();
-
-	$username = $ci->current_user['username'];
+	if (isset($ci->current_user['username'])) {
+		$username = $ci->current_user['username'];
+	}
+	
 ?>
 <ul class="nav navbar-nav">
-	<li class="active">
+	<!--<li class="active">
 		<a href="#">
 			Sample
 			<span class="badge">2</span>
 		</a>
-		
+	</li>-->
+	<li class="active">
+		<?php echo anchor('dashboard/index','Home'); ?>
 	</li>
 </ul>
 <ul class="nav navbar-nav navbar-right">

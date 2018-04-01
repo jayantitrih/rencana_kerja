@@ -36,8 +36,9 @@ class Permissions extends MY_Model
 	}
 
 	public function get_by_multi_groups($group_ids=array()){
-		$this->db->where_in('group_id',$group_ids);
-		return $this->db->get($this->_table)->result_array();
-		
+		if ($group_ids) {
+			$this->db->where_in('group_id',$group_ids);
+			return $this->db->get($this->_table)->result_array();
+		}
 	}
 }

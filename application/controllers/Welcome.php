@@ -7,22 +7,19 @@ class Welcome extends MY_Controller
     {
         parent::__construct();
         $this->lang->load('auth');
+        $user_id = $this->ion_auth->get_user_id();
+        if ($user_id) {
+            redirect('dashboard/index','refresh');
+        }
     }
 
     public function index() {
-
-        $data['links'] = array(
-            'model' => 'https://github.com/jamierumbelow/codeigniter-base-model',
-            'auth' => 'https://github.com/benedmunds/CodeIgniter-Ion-Auth',
-            'layout' => 'https://github.com/vmoulin78/codeigniter-layout-library',
-            'rest api' => 'https://github.com/chriskacerguis/codeigniter-restserver'
-        );
         $this->layout->set_template('ittp_landing_template')
         ->set_title('Welcome to Codeigniter !')
         ->set_metadata('description', 'simple framework php with MVC pattern')
         ->set_http_equiv('refresh', 30)
         ->add_basic_assets()
-        ->render_action_view($data);
+        ->render_action_view();
     }
 
     public function login() {
@@ -30,13 +27,16 @@ class Welcome extends MY_Controller
             'id'    => 'identity',
             'type'  => 'text',
             'value' => $this->form_validation->set_value('identity'),
-            'class' =>'form-control'
+            'class' =>'form-control login-6',
+            'placeholder'=>'Email'
         );
         $data['password'] = array(
             'name' => 'password',
             'id'   => 'password',
             'type' => 'password',
-            'class'=>'form-control'
+            'class'=>'form-control login-6',
+            'placeholder'=>'Password'
+            //'placeholder' => lang('login_password_label', 'password')
         );
         $title = $this->lang->line('login_heading');
         $this->layout->set_template('login_template')
@@ -159,9 +159,9 @@ class Welcome extends MY_Controller
     public function forgot_password(){
         $data['type']      = $this->config->item('identity','ion_auth');
         $data['identity']  = array(
-            'name' => 'identity'
-            ,'id' => 'identity'
-            ,'class'=>'form-control'
+            'name' => 'identity',
+            'class' =>'form-control login-6',
+            'placeholder'=>'Email'
         );
         if ( $this->config->item('identity', 'ion_auth') != 'email' ){
             $data['identity_label'] = $this->lang->line('forgot_password_identity_label');

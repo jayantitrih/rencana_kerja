@@ -13,11 +13,12 @@ class MY_Controller extends CI_Controller
 		$this->load->library('ion_auth');
 		
 		$meta['charset']     = 'utf-8';
-        $meta['csrf-token']  = bin2hex(random_bytes(32));//base64_encode(openssl_random_pseudo_bytes(32));
+        $meta['csrf-token']  = bin2hex(random_bytes(32));
         $meta['viewport']    = 'width=device-width, initial-scale=1';
         $this->layout->set_metadata_array($meta);
         $this->set_current_user();
-
+        $this->load->helper('tools');
+        //$this->verify_permission();
         
     }
 
@@ -42,25 +43,35 @@ class MY_Controller extends CI_Controller
                     $group_ids[] = $value['id'];
                 }
             }
-            $allow 		= $this->permissions->get_by_multi_groups($group_ids);
+            $allow 		= $this->permissions->get_by_multi_groups($group_ids);            
+
+            $allow_methods      = array();
+            $allow_controllers  = array('dashboard','api');
             if ($allow) {
-                $allow_methods 		= array();
-                $allow_controllers 	= array();
                 foreach ($allow as $key => $value) {
                     $allow_controllers[] = $value['modul'];
                     $allow_methods[] 	 = $value['aksi'];
                 }	
-                if ($this->ion_auth->is_admin()) {
-                    array_push($allow_controllers, 'dashboard','permission');
-                }else{
-                    array_push($allow_controllers, 'dashboard');
-                }
-                if (
-                    !in_array($controller, $allow_controllers) && 
-                    !in_array($method, $allow_methods)
-                ) {
-                    echo 'not allowed';
-                }
+            }
+
+            if ($this->ion_auth->is_admin()) {
+                array_push($allow_controllers, 'managed');
+            }
+
+            if (
+                !in_array($controller, $allow_controllers) && 
+                !in_array($method, $allow_methods)
+            ) {
+                $this->layout->set_alert('warning',"The page could not be found or you don't have permission to view it");
+                redirect('dashboard/index','refresh');
+            }
+
+        }else{
+
+            if (!in_array($controller, array('welcome'))) {
+                $this->layout->set_alert('warning',"Please login first");
+
+                //redirect('welcome/index','refresh');
             }
         }    
     }
