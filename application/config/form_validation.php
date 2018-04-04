@@ -20,11 +20,19 @@ $config = array(
 	),
 	'add_meeting'=>array(
 		array('field'=>'meeting_date','label'=>'Tanggal Meeting','rules'=>'trim|required'),
-		array('field'=>'meeting_review','label'=>'Materi Tinjauan','rules'=>'trim|required')
+		array('field'=>'meeting_review','label'=>'Materi Tinjauan','rules'=>'trim|required|is_unique[meetings.meeting_review]')
+		,
+		array('field'=>'start_at','label'=>'Dari Jam','rules'=>'trim|required')
+		
 	),
 	'add_partisipant'=>array(
 		array('field'=>'id_meeting','label'=>'ID Meeting','rules'=>'trim|required|is_natural_no_zero'),
 		array('field'=>'id_user','label'=>'Email','rules'=>'trim|required')
 	),
+	'checklist_tugas'=>array(
+		array('field'=>'discussion_finish','label'=>'Tanggal Selesai','rules'=>'trim|required')
+	),
+	
+		
 	
 );

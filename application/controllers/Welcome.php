@@ -176,7 +176,7 @@ class Welcome extends MY_Controller
 
 
     public function submit_forgot_password(){
-        
+
         $identity_column    = $this->config->item('identity','ion_auth');
         $post_identity      = $this->input->post('identity');
         $identity           = $this->ion_auth->where($identity_column, $post_identity)->users()->row();
@@ -206,6 +206,19 @@ class Welcome extends MY_Controller
             redirect("welcome/forgot_password", 'refresh');
         }
     }
+    /*
+    public function sample_email()
+    {
+        $this->load->library('email');
 
+        $this->email->from('firmawaneiwan@gmail.com', 'Iwan firmawan');
+        $this->email->to('14102065@st3telkom.ac.id');
 
+        $this->email->subject('Email Test');
+        $this->email->message('Testing the email class.');
+        $this->email->send();
+        var_dump($this->email->print_debugger());
+    }*/
+
+    
 }

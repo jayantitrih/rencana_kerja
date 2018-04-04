@@ -60,7 +60,7 @@
 				<h4 class="list-group-item-heading">ARAHAN / INFORMASI</h4>
 				<?php if(isset($meeting['meeting_information'])) : ?>
 					<p>
-						<?= strtoupper($meeting['meeting_information']) ?>
+						<?= $meeting['meeting_information'] ?>
 					</p>
 				<?php endif; ?>
 			</div>
@@ -94,8 +94,7 @@
 			<thead>
 				<th>#</th>
 				<th>Email</th>
-				<th>Ketua</th>
-				<th>Notulis</th>
+				<th>Opsi</th>
 			</thead>
 			<tbody>
 				<?php
@@ -103,12 +102,12 @@
 					$no =1;
 					foreach ($partisipant as $key => $value) { ?>
 					<td><?= $no ?></td>
-					<td><?= $value->id_user ?></td>
+					<td><?= $value->email ?></td>
 					<td>
-						<input type="radio" name="" value="" />
-					</td>
-					<td>
-						<input type="radio" name="" value="" />
+						<?= anchor('app_meetings/remove_partisipant/'.$meeting['id_meeting'].'/'.$value->id_user,
+							'<i class="fa fa-trash"></i>',
+							array('class'=>'btn btn-danger')
+							) ?>
 					</td>
 					<?php	
 					$no++;

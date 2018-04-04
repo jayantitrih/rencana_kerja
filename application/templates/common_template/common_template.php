@@ -6,13 +6,15 @@
     <?php $CI->layout->trigger_metadata(); ?>
     <?php $CI->layout->trigger_http_equiv(); ?>
     <?php $CI->layout->add_css_uri('css/app.css');?>
+    
     <?php $CI->layout->add_css_uri('css/bootstrap-notifications.min.css');?>
     <?php $CI->layout->add_css_uri('css/font-awesome.min.css','local');?>
     <?php $CI->layout->add_css_uri('css/dataTables.bootstrap.css','local');?>
     
     <?php $CI->layout->add_css_uri('css/jquery-ui.min.css','local');?>
     <?php $CI->layout->add_css_uri('css/summernote.css','local');?>
-    
+
+    <?php $CI->layout->add_css_uri('css/custom.bootstrap.css','local');?>
 
     <?php $CI->layout->trigger_css(); ?>
 </head>

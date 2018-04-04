@@ -30,7 +30,7 @@
 			</div>
 			<div class="col-xs-12 col-md-6">
 				<div class="form-group">
-					<label>Dari jam</label>	
+					<label>Dari jam <code>* Wajib diisi</code> </label>	
 					<input type="time" name="start_at" class="form-control">
 				</div>
 				<div class="form-group">
