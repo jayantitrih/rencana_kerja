@@ -17,9 +17,8 @@ class MY_Controller extends CI_Controller
         $meta['viewport']    = 'width=device-width, initial-scale=1';
         $this->layout->set_metadata_array($meta);
         $this->set_current_user();
-        $this->load->helper('tools');
+        $this->load->helper(array('tools','ciapakai'));
         //$this->verify_permission();
-        
     }
 
     protected function set_current_user(){
@@ -70,8 +69,7 @@ class MY_Controller extends CI_Controller
 
             if (!in_array($controller, array('welcome'))) {
                 $this->layout->set_alert('warning',"Please login first");
-
-                //redirect('welcome/index','refresh');
+                redirect('welcome/index','refresh');
             }
         }    
     }

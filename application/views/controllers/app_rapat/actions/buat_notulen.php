@@ -59,27 +59,30 @@ if (
 				</ul>
 			</div>
 			<div class="panel-body">
+				
 				<!-- Tab panes -->
 				<div class="tab-content">
 					
 					<div role="tabpanel" class="tab-pane active" id="home">
+						<?php echo form_open('app_rapat/submit_buat_notulen/'.$id_meeting);?>
 						<!-- Start tab info -->
 						<div class="row">
 							<div class="col-xs-12">
 								<h4>Agenda & Pembahasan</h4>
-								<textarea class="form-control" name=""></textarea>
+								<textarea class="form-control" id="summernote" name="discussion"></textarea>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-12 col-md-8">
 								<div class="form-group">
 									<label>Penanggung Jawab</label>
-									<input type="text" name="discussion_pic" class="form-control col-xs-12" >
+									<input type="hidden" name="discussion_pic" value="0" />
+									<input type="text" name="email" class="form-control col-xs-12 input-auto-pic" >
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-4">
 								<div style="padding-top: 25px;">
-									<input type="checkbox" name="self_pic" >
+									<input type="checkbox" name="self_pic" value="<?= (isset($id_user))? $id_user : '0';?>">
 									<label>
 										Saya sendiri
 									</label>
@@ -90,13 +93,13 @@ if (
 							<div class="col-xs-12 col-md-6">
 								<div class="form-group">
 									<label>Mulai </label>
-									<input type="date" name="" class="form-control col-xs-12" >
+									<input type="date" name="discussion_start" class="form-control col-xs-12" >
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6">
 								<div class="form-group">
 									<label>Target </label>
-									<input type="date" name="" class="form-control col-xs-12" >
+									<input type="date" name="discussion_target" class="form-control col-xs-12" >
 								</div>
 							</div>
 						</div>
@@ -112,6 +115,7 @@ if (
 							</div>
 						</div>
 						<!-- End tab info -->
+						<?php echo form_close();?>
 					</div>
 					<div role="tabpanel" class="tab-pane" id="notulen">
 						<?= (isset($tabel_notulen))? $tabel_notulen : ''?>

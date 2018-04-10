@@ -6,7 +6,7 @@
 				<th>No</th>
 				<th>Agenda & Pembahasan</th>
 				<th>PIC</th>
-				<th>Target</th>
+				<th>Durasi</th>
 				<th>Selesai</th>
 				<th>Status</th>
 			</tr>
@@ -25,7 +25,7 @@
 						<?= (isset($value->discussion))? $value->discussion : '' ?>	
 					</td>
 					<td>
-						<?= (isset($value->discussion_pic))? $value->discussion_pic : '' ?>	
+						<?= (isset($value->discussion_pic))? get_info_user($value->discussion_pic) : '' ?>	
 					</td>
 					<td>
 						<?php
@@ -33,9 +33,9 @@
 							isset($value->discussion_start)
 							&& 	isset($value->discussion_target)
 						) {
-							echo $value->discussion_start;
-							echo '&nbsp;s/d&nbsp;';
-							echo $value->discussion_target;
+							echo show_date_human_format($value->discussion_start);
+							echo '<br/>&nbsp;s/d&nbsp;<br/>';
+							echo show_date_human_format($value->discussion_target);
 						}
 						?>	
 					</td>

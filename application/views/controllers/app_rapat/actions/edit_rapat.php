@@ -50,6 +50,7 @@ if (
 				</ul>
 			</div>
 			<div class="panel-body">
+<?php echo form_open('app_rapat/submit_update_rapat/'.$id_meeting);?>
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane" id="about">
@@ -108,10 +109,12 @@ if (
 							</div>
 						</div>
 
-						<!-- End tab info -->
+						
 					</div>
 					
-				</div>
+				</div><!-- End tab pane -->
+<?php echo form_close();?>
+
 			</div>
 		</div>
 	</div>

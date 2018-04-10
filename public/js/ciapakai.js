@@ -1,22 +1,22 @@
 $(document).ready(function(){
 	
-    /* summernote */
-    if ( $("#summernote").length > 0) {
-    	$("#summernote").summernote({ 
-    		height: 200,
-    		toolbar : [
-    			['style',['style']],
-    			['font',['bold','italic','underline']],
-    			['fontname',['fontname']],
-    			['fontsize',['fontsize']],
-    			['color',['color']],
-    			['para',['ol','li','paragraph','height']],
-    			['table',['table']],
-    			['insert',['link']],
+	/* summernote */
+	if ( $("#summernote").length > 0) {
+		$("#summernote").summernote({ 
+			height: 200,
+			toolbar : [
+			['style',['style']],
+			['font',['bold','italic','underline']],
+			['fontname',['fontname']],
+			['fontsize',['fontsize']],
+			['color',['color']],
+			['para',['ol','li','paragraph','height']],
+			['table',['table']],
+			['insert',['link']],
     			//['view',['undo','redo','fullscreen','codeview','help']],
-    		]
-    	}); 
-    }
+    			]
+    		}); 
+	}
 	
 	if ($('.breadcrumb').length == 1) {
 		$('.breadcrumb').find('li').last().find('a').css({
@@ -126,17 +126,85 @@ $(document).ready(function(){
 		});
 	}
 	
-	if ($('.auto-users').length == 1) {
+	if ($('.input-auto-users').length == 1) {
 		
-		var action_url 	= $('.site_url').text();
-        action_url+='api/get_by_keyword/users/email';
-        $(".auto-users").autocomplete({
-        	source: action_url,
-            minLength: 1,
-            select: function (event, ui) { 
-            	console.log(ui.item.key);
-            	$('input[name="id_user"]').val(ui.item.key);
-            }
-        });
-    }
+		var action_url 		= '';
+		var selector 		=".input-auto-users";
+		var input_hidden 	='input[name="id_user"]';
+
+		action_url  = $('.site_url').text();
+		action_url +='api/get_by_keyword/users/email';
+
+		set_autocomplete(action_url,selector,input_hidden);
+	}
+
+	if ($('.input-auto-chairman').length == 1) {
+		
+		var action_url 		= '';
+		var selector 		=".input-auto-chairman";
+		var input_hidden 	='input[name="chairman"]';
+
+		action_url  = $('.site_url').text();
+		action_url +='api/get_by_keyword/users/email';
+
+		set_autocomplete(action_url,selector,input_hidden);
+	}
+
+	if ($('.input-auto-secretary').length == 1) {
+		
+		var action_url 		= '';
+		var selector 		=".input-auto-secretary";
+		var input_hidden 	='input[name="secretary"]';
+
+		action_url  = $('.site_url').text();
+		action_url +='api/get_by_keyword/users/email';
+
+		set_autocomplete(action_url,selector,input_hidden);
+	}
+
+	if ($('.input-auto-secretary').length == 1) {
+		
+		var action_url 		= '';
+		var selector 		=".input-auto-secretary";
+		var input_hidden 	='input[name="secretary"]';
+
+		action_url  = $('.site_url').text();
+		action_url +='api/get_by_keyword/users/email';
+
+		set_autocomplete(action_url,selector,input_hidden);
+	}
+
+	if ($('.input-auto-pic').length == 1) {
+		
+		var action_url 		= '';
+		var selector 		=".input-auto-pic";
+		var input_hidden 	='input[name="discussion_pic"]';
+
+		action_url  = $('.site_url').text();
+		action_url +='api/get_by_keyword/users/email';
+
+		set_autocomplete(action_url,selector,input_hidden);
+	}
+
+	
+ 
+
+	$('.btn-next').click(function(){
+		$('.nav-tabs > .active').next('li').find('a').trigger('click');
+	});
+
+	$('.btn-previous').click(function(){
+		$('.nav-tabs > .active').prev('li').find('a').trigger('click');
+	});
 });
+
+function set_autocomplete(action_url,selector,input_hidden){
+
+	$(selector).autocomplete({
+		source: action_url,
+		minLength: 1,
+		select: function (event, ui) { 
+			$(input_hidden).val(ui.item.key);
+		}
+	});
+}

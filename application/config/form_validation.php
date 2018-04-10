@@ -32,6 +32,17 @@ $config = array(
 	'checklist_tugas'=>array(
 		array('field'=>'discussion_finish','label'=>'Tanggal Selesai','rules'=>'trim|required')
 	),
+	'update_meeting'=>array(
+		array('field'=>'meeting_date','label'=>'Tanggal Meeting','rules'=>'trim|required'),
+		array('field'=>'meeting_review','label'=>'Materi Tinjauan','rules'=>'trim|required')
+		,
+		array('field'=>'start_at','label'=>'Dari Jam','rules'=>'trim|required')
+		
+	),
+	'buat_notulen'=>array(
+		array('field'=>'discussion','label'=>'Agenda & Pembahasan','rules'=>'trim|required')
+		//array('field'=>'discussion_pic','label'=>'Penanggung jawab','rules'=>'trim|required|is_natural_no_zero')
+	),
 	
 		
 	
