@@ -514,7 +514,7 @@ class Layout
      * @param $return_bool
      * @return $this if $return_bool is false, otherwise true if the css asset has been added successfully and false otherwise
      */
-    public function add_css_uri($uri, $location = 'local', array $attributes = [], array $tags = [], bool $return_bool = false) {
+    public function add_css_uri($uri, $location = 'local', $attributes = array(),$tags = array(),$return_bool = false) {
         if ( ! in_array($location, array('local', 'remote'))) {
             show_error('Layout error: Incorrect location for css uri asset');
         }
@@ -558,7 +558,7 @@ class Layout
      * @param $return_bool
      * @return $this if $return_bool is false, otherwise true if the css asset has been added successfully and false otherwise
      */
-    public function add_css_str($content, array $attributes = [], array $tags = [], bool $return_bool = false) {
+    public function add_css_str($content,$attributes = array(),$tags = array(),$return_bool = false) {
         $this->check_css_tags($tags);
 
         if ( ! is_string($content)) {
@@ -600,7 +600,7 @@ class Layout
      * @param $return_bool
      * @return $this if $return_bool is false, otherwise true if the css asset has been added successfully and false otherwise
      */
-    public function add_css_php($callback, array $args = [], array $attributes = [], array $tags = [], bool $return_bool = false) {
+    public function add_css_php($callback, $args = array(),$attributes = array(), $tags = array(),$return_bool = false) {
         $this->check_css_tags($tags);
 
         if ( ! is_callable($callback)) {
@@ -660,7 +660,7 @@ class Layout
      * @param $return_bool
      * @return $this if $return_bool is false, otherwise true if the javascript asset has been added successfully and false otherwise
      */
-    public function add_js_uri($uri, $location = 'local', array $attributes = [], array $tags = [], bool $return_bool = false) {
+    public function add_js_uri($uri, $location = 'local',$attributes = array(),$tags = array(),$return_bool = false) {
         if ( ! in_array($location, array('local', 'remote'))) {
             show_error('Layout error: Incorrect location for javascript uri asset');
         }
@@ -704,7 +704,7 @@ class Layout
      * @param $return_bool
      * @return $this if $return_bool is false, otherwise true if the javascript asset has been added successfully and false otherwise
      */
-    public function add_js_str($content, array $attributes = [], array $tags = [], bool $return_bool = false) {
+    public function add_js_str($content,$attributes = array(),$tags = array(), $return_bool = false) {
         $this->check_js_tags($tags);
 
         if ( ! is_string($content)) {
@@ -746,7 +746,7 @@ class Layout
      * @param $return_bool
      * @return $this if $return_bool is false, otherwise true if the javascript asset has been added successfully and false otherwise
      */
-    public function add_js_php($callback, array $args = [], array $attributes = [], array $tags = [], bool $return_bool = false) {
+    public function add_js_php($callback,$args = array(),$attributes = array(),$tags = array(),$return_bool = false) {
         $this->check_js_tags($tags);
 
         if ( ! is_callable($callback)) {
