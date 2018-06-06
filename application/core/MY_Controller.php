@@ -6,6 +6,7 @@
 class MY_Controller extends CI_Controller
 {
 	public $current_user = array();
+    public $crud;
 	function __construct()
 	{
 		parent::__construct();
@@ -13,12 +14,14 @@ class MY_Controller extends CI_Controller
 		$this->load->library('ion_auth');
 		
 		$meta['charset']     = 'utf-8';
-        $meta['csrf-token']  = bin2hex(random_bytes(32));
+        $meta['csrf-token']  = bin2hex(uniqid('', true));
         $meta['viewport']    = 'width=device-width, initial-scale=1';
         $this->layout->set_metadata_array($meta);
         $this->set_current_user();
         $this->load->helper(array('tools','ciapakai'));
+        $this->load->library('grocery_CRUD');
         //$this->verify_permission();
+        $this->crud = new grocery_CRUD();
     }
 
     protected function set_current_user(){
@@ -83,7 +86,7 @@ class MY_Controller extends CI_Controller
         if ($prefix && $methods) {
             foreach ($methods as $key => $value) {
                 foreach ($prefix as $index => $word) {
-                    if (strpos($value, $word) !== false) {
+                    if (strpos($value, $word) === 0) {
                         $json[] = $value; 
                     }
                 }

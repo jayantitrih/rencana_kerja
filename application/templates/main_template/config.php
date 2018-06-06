@@ -6,4 +6,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Template Configuration
 |--------------------------------------------------------------------------
 */
-$config['parent_template'] = "common_template";
+$config['parent_template'] = "landing_template";

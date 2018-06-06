@@ -10,13 +10,19 @@
 		<?php echo anchor('dashboard/index','Home'); ?>
 	</li>
 	<li >
-		<?php echo anchor('managed/index','Permission'); ?>
-	</li>
-	<li >
 		<?php echo anchor('managed/users','Users'); ?>
 	</li>
 	<li >
-		<?php echo anchor('managed/groups','Groups'); ?>
+		<?php echo anchor('admin/pengajaran','Pengajaran'); ?>
+	</li>
+	<li >
+		<?php echo anchor('admin/pengabdian_masyarakat','Pengabdian Masyarakat'); ?>
+	</li>
+	<li >
+		<?php echo anchor('admin/penelitian','Penelitian'); ?>
+	</li>
+	<li >
+		<?php echo anchor('admin/penunjang','Penunjang BKD'); ?>
 	</li>
 </ul>
 <ul class="nav navbar-nav navbar-right">

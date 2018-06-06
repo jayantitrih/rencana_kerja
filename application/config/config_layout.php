@@ -28,9 +28,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['layout_web_folder'] = 'public';
 
 $config['layout_default_template']  = 'main_template';
-$config['layout_default_title']     = 'The default title';
+$config['layout_default_title']     = 'Beban Kerja Dosen';
 $config['layout_default_charset']   = $this->item('charset');
-$config['app_name']					= 'eMOM';
+$config['app_name']					= 'BKD ITTelkom';
 
 $config['layout_basic_css']  = array();
 $config['layout_basic_js']   = array();

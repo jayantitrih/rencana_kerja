@@ -38,24 +38,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<?php
-				if (isset($groups)) {
-					$check ='';
-					foreach ($groups as $key => $value) {
-						$attr['name'] 	= 'group[]';
-						$attr['type'] 	= 'checkbox';
-						$attr['value'] 	= $value['id'];
-						$check .= form_input($attr);
-						$check .= '&nbsp;'.ucwords($value['name']).'&nbsp;';
-					}
-					echo $check;
 
-				}
-				?>
-			</div>
-		</div>
 		<div class="text-right">
 			<button type="submit" class="btn btn-primary">
 				<i class="fa fa-save"></i>&nbsp;

@@ -12,53 +12,43 @@ class Dashboard extends MY_Controller
 		if (!$this->ion_auth->get_user_id()) {
             redirect('welcome/index','refresh');
         }
+        $this->load->helper('bkd');
 	}
 
 	public function index(){
-		$this->load->config('config_permission');
-		$this->load->model(array('permissions','groups'));
-		$this->load->helper('permission');
-		$icons 		= $this->config->item('icon');
-		$user_id 	= $this->current_user['id'];
-		$id_groups 	= $this->groups->get_id_groups_by_user_id($user_id);
-		$permissions 	= $this->permissions->get_by_multi_groups($id_groups);
-		$launcher 		= array();
-		if ($permissions) {
-			foreach ($permissions as $key => $value) {
-				if (isset($value['aksi']) && isset($value['modul'])) {
-					if (strpos($value['aksi'], 'index_') !== false) {
-						$icon = 'fa-info';
-						if (isset($icons[$value['aksi']]) && !empty($icons[$value['aksi']])) {
-							$icon = $icons[$value['aksi']];
-						}
-						$launcher[] = array(
-							'label' => set_module_name($value['aksi'],5) ,
-							'icon' => 'fa '.$icon,
-							'url' => site_url($value['modul'].'/'.$value['aksi'])
-						);
-						
-					}
-				}
-			}
-		}
-		$data['launcher'] = $launcher;
+		$this->load->model('identitas');
 		if (isset($this->current_user['username'])) {
 			$data['username'] = $this->current_user['username'];
 		}
 		
 		if ($this->ion_auth->is_admin()) {
 			$this->layout->set_template('admin_template');
+			$data['identitas']	= $this->identitas->get_all();
 		}else{
-			$this->layout->set_template('dashboard_template');
+			$this->layout->set_template('grocery_dosen_template');
+			$user_id = $this->session->userdata('user_id');
+		$data['identitas']	 = $this->identitas->get_many_by('user_id',$user_id);
 		}
-
+		
 		//$this->layout->add_breadcrumb_item('Home','dashboard/index')
-		$this->layout->set_title('Set permissions')
+		$this->layout->set_title('Home - BKD')
             ->render_action_view($data);
 	}
 
 	public function profile(){
+		$this->load->model('identitas');
+		$user_id=$this->session->userdata('user_id');
+		$data['profile'] = $this->current_user;
+		$data['identitas']=$this->identitas->get_by('user_id',$user_id);
+		if ($this->ion_auth->is_admin()) {
+			$this->layout->set_template('admin_template');
+		}
+		else{
+			$this->layout->set_template('dashboard_template');
+		}
 		
+		$this->layout->set_title('Profile')
+            ->render_action_view($data);	
 	}
 
 	public function logout(){
@@ -66,5 +56,19 @@ class Dashboard extends MY_Controller
 			$this->session->sess_destroy();
 			redirect('welcome/index','refresh');
 		}
+	}
+
+	public function update_profile(){
+
+		
+	}
+	public function pemberitahuan($user_id=''){
+		$data ['notifikasi']= (object) array(
+            array(
+				'id'=>1,
+				'message' =>'hello'
+			),
+        );
+        $this->db->update('dosen',$data);
 	}
 }

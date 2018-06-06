@@ -81,6 +81,17 @@ class Api extends REST_Controller
 		if (isset($_GET['term'])) {
 			$this->load->model($model);
 			
+			//customize
+			if ($model == 'users') {
+				$where_not_in = array();
+				if ($meeting = $this->session->userdata('meeting')) {
+					array_push($where_not_in, $meeting['chairman'],$meeting['secretary']);
+				}
+				if ($where_not_in) {
+					$this->$model->_database->where_not_in('id',$where_not_in);
+				}
+			}
+
 			$result = $this->$model->get_by_like(
 				array($field),
 				$_GET['term']
@@ -101,4 +112,6 @@ class Api extends REST_Controller
 		}
 		$this->response($data);
 	}
+
+
 }

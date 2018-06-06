@@ -7,6 +7,34 @@
 	}
 	
 ?>
+<ul class="nav navbar-nav">
+	<li >
+		<?php echo anchor('dashboard/index','Home'); ?>
+	</li>
+	<!--
+	<li >
+		<?php //echo anchor('dosen/daftar_identitas','Identitas'); ?>
+	</li>
+-->
+	<li >
+		<?php echo anchor('dosen/daftar_akademik','Akademik'); ?>
+	</li>
+	<li >
+		<?php echo anchor('dosen/daftar_kepegawaian','Kepegawaian'); ?>
+	</li>
+	<li >
+		<?php echo anchor('dosen/daftar_pengajaran','Pengajaran'); ?>
+	</li>
+	<li >
+		<?php echo anchor('dosen/daftar_pengabdian_masyarakat','Pengabdian'); ?>
+	</li>
+	<li >
+		<?php echo anchor('dosen/daftar_penelitian','Penelitian'); ?>
+	</li>
+	<li >
+		<?php echo anchor('dosen/daftar_penunjang','Penunjang'); ?>
+	</li>
+</ul>
 <ul class="nav navbar-nav navbar-right">
 	<li class="dropdown dropdown-notifications">
 		<a href="#" class="dropdown-toggle" id="list-notif-lg" data-toggle="dropdown" style="width: 45px; padding-right: 20px;height: 45px;">

@@ -234,4 +234,6 @@ class Managed extends MY_Controller
 		redirect('managed/details_user/'.$user_id,'refresh');
 	}
 
+	
+
 }

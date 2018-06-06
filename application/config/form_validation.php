@@ -43,7 +43,9 @@ $config = array(
 		array('field'=>'discussion','label'=>'Agenda & Pembahasan','rules'=>'trim|required')
 		//array('field'=>'discussion_pic','label'=>'Penanggung jawab','rules'=>'trim|required|is_natural_no_zero')
 	),
-	
+	'email'=>array(
+		array('field'=>'email','label'=>'Email','rules'=>'trim|required|valid_email')
+	),
 		
 	
 );

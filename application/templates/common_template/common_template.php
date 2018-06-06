@@ -13,6 +13,7 @@
     <?php $CI->layout->add_css_uri('css/summernote.css','local');?>
     <?php $CI->layout->add_css_uri('css/custom.bootstrap.css','local');?>
     <?php $CI->layout->trigger_css(); ?>
+    
 </head>
 <body>
     <div class="app">
@@ -25,9 +26,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo site_url('dashboard/index');?>">
-                        <?php echo (isset($app_name))? $app_name : 'Codeigniter Apps';?>
-                    </a>
+                    <?php
+                        if (!isset($app_name)) {
+                            $app_name = 'Codeigniter Apps';
+                        }
+                        if ($CI->current_user) {
+                            echo anchor('dashboard/index',$app_name,array('class'=>'navbar-brand'));
+                        }else{
+                            echo anchor('welcome/index',$app_name,array('class'=>'navbar-brand'));
+                        }
+                    ?>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
                     <?php $CI->layout->block('menu_block'); ?> 
@@ -69,8 +77,7 @@
     <?php $CI->layout->add_js_uri('js/dataTables.bootstrap.js');?>
     <?php $CI->layout->add_js_uri('js/summernote.js');?>
     <?php $CI->layout->add_js_uri('js/ciapakai.js');?>
-    
-
     <?php $CI->layout->trigger_js(); ?>
+
 </body>
 </html>

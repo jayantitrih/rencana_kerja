@@ -1,6 +1,6 @@
 <?php
 
-$config['prefix_method'] = array('index','add_','edit_','archive_','remove_','details_','buat_');
+$config['prefix_method'] = array('index','daftar_');
 /**
 * please using font-awesome to insert icon 
 */

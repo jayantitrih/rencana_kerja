@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php $CI->layout->trigger_charset(); ?>
         <?php $CI->layout->trigger_metadata(); ?>
         <?php $CI->layout->trigger_http_equiv(); ?>
+        <?php $CI->layout->add_css_uri('css/app.css');?>
         <?php $CI->layout->add_css_uri('css/app.landing.css');?>
         <?php $CI->layout->add_css_uri('css/font-awesome.min.css','local');?>
         <?php $CI->layout->trigger_css(); ?>

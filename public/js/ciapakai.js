@@ -37,42 +37,6 @@ $(document).ready(function(){
 	* input checkout untuk memilih action 
 	*/
 
-	if ($('input[name="aksi[]"]').length > 0) {
-
-		$(document).on('click','input[name="aksi[]"]',function(){
-			var modul 		= $('input[name="modul"]').val();
-			var aksi 		= $(this).val();
-			var group_id 	= $('select[name="group_id"]').val();
-			var action_url 	= $('.site_url').text();
-			var data ={
-				'modul':modul ,
-				'aksi':aksi ,
-				'group_id':group_id 
-			}
-			if (group_id == 0) {
-				alert('pilih level user dahulu');
-				$('select[name="group_id"]').focus();
-			}else{
-				if ($(this).is(':checked')) {
-					action_url+='api/add_permission';
-				}else{
-					action_url+='api/delete_permission';
-				}
-
-				$.ajax({
-					url: action_url,
-					data: data,
-					type:"POST",
-					success: function(data){
-						console.log(data);
-					}
-				});
-
-			}
-
-		});    	
-	}
-
 	if ($('.datatables').length == 1) {
 		$('.datatables').DataTable();
 	}
@@ -111,16 +75,27 @@ $(document).ready(function(){
 			action_url += $(this).attr('id');
 			action_url += '/json_get_methods';
 			var html_checkbox = '';
-			$.ajax({
-				url: action_url,
-				type:"POST",
-				dataType:"json",
-				success: function(data){
-
-					console.log(data);
-				}
-			});
-
+			var group_id 	= $('select[name="group_id"]').val();
+			var modul 		= $(this).attr('id').toString();
+			if (group_id > 0) {
+				$.ajax({
+					url: action_url,
+					type:"POST",
+					dataType:"json",
+					success: function(data){
+						var input_checkbox ='';
+						$.each(data, function(i, item) {
+							input_checkbox +='<input type="checkbox" onclick="set_action(this,'+group_id+')" value="'+item+'" />';
+							input_checkbox +=item+'<br/>';
+						});
+						
+						$('.checkbox-action').html(input_checkbox);
+					}
+				});
+			}else{
+				alert('pilih level user dahulu');
+				$('select[name="group_id"]').focus();
+			}
 			return false;
 		});
 	}
@@ -206,3 +181,32 @@ function set_autocomplete(action_url,selector,input_hidden){
 	});
 }
 
+function set_action(obj,group_id){
+	var action_url 	= $('.site_url').text();
+	var aksi 	= $(obj).val();
+	var modul 	= ''; 
+	if ($('a.choose-module').hasClass('active')) {
+		modul = $('a.choose-module').attr('id');
+	}
+	var data ={
+		'modul': modul ,
+		'aksi' : aksi ,
+		'group_id' : group_id 
+	};
+	//console.log(data);
+	
+	if ($(obj).is(':checked')) {
+		action_url+='api/add_permission';
+	}else{
+		action_url+='api/delete_permission';
+	}
+
+	$.ajax({
+		url: action_url,
+		data: data,
+		type:"POST",
+		success: function(data){
+			console.log(data);
+		}
+	});
+}

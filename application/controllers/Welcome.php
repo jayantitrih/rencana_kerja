@@ -14,8 +14,8 @@ class Welcome extends MY_Controller
     }
 
     public function index() {
-        $this->layout->set_template('ittp_landing_template')
-        ->set_title('Welcome to Codeigniter !')
+        $this->layout->set_template('main_template')
+        ->set_title('BKD ITTelkom')
         ->set_metadata('description', 'simple framework php with MVC pattern')
         ->set_http_equiv('refresh', 30)
         ->add_basic_assets()
@@ -206,19 +206,27 @@ class Welcome extends MY_Controller
             redirect("welcome/forgot_password", 'refresh');
         }
     }
-    /*
-    public function sample_email()
+    
+    
+
+    public function messages()
     {
-        $this->load->library('email');
+        $this->load->model('message'); 
+        $data['messages'] = $this->message->get_all();
+        $this->load->library('template');
+        $this->template->set_layout('admin_template');
+        $this->template->set_content('welcome/messages',$data)->render();
+    }
 
-        $this->email->from('firmawaneiwan@gmail.com', 'Iwan firmawan');
-        $this->email->to('14102065@st3telkom.ac.id');
-
-        $this->email->subject('Email Test');
-        $this->email->message('Testing the email class.');
-        $this->email->send();
-        var_dump($this->email->print_debugger());
-    }*/
+    public function read($id_message){
+    $this->load->model('message'); 
+    $message = $this->message->get($id_message);
+    if($message){
+        $data['read_status'] = 1;
+        $this->message->update($id_message,$data);
+    }
+    redirect('welcome/messages/','refresh');
+ }
 
     
 }
